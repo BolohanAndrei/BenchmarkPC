@@ -1,0 +1,12 @@
+*.idea
+*x64
+*.vs
+.csv
+*.xlsx*
+.user
+.filters
+*.sln*
+*.vcxproj
+*.vcxproj*
+CreareGrafice/*
+*.html
