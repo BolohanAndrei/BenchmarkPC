@@ -3,50 +3,82 @@ import altair as alt
 import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-
-nume_fisier_date = "benchmark_results.csv.xlsx"
+nume_fisier_date = "benchmark_results_phase3.csv"
 cale_completa_fisier = os.path.join(script_dir, nume_fisier_date)
 
+print(f"--- DASHBOARD COMPARATIV (Green Theme) ---")
+
 try:
-    df_raw = pd.read_excel(cale_completa_fisier, sheet_name='benchmark_results')
-    print(f"Am incarcat cu succes datele din: {cale_completa_fisier}")
-    print("Primele randuri de date:")
-    print(df_raw.head())
+    df = pd.read_csv(cale_completa_fisier)
+    
+    df.columns = df.columns.str.strip()
+    df['Timp_Executie_sec'] = pd.to_numeric(df['Timp_Executie_sec'], errors='coerce')
+    df['Performanta'] = pd.to_numeric(df['Performanta'], errors='coerce')
 
-    df_raw['Timp_Executie_sec'] = pd.to_numeric(df_raw['Timp_Executie_sec'], errors='coerce')
-    df_raw['Performanta'] = pd.to_numeric(df_raw['Performanta'], errors='coerce')
+    lista_teste = df['Test'].unique().tolist()
+    
+    input_dropdown = alt.binding_select(options=lista_teste, name='Selecteaza Testul: ')
+    
+    selection = alt.selection_point(
+        fields=['Test'], 
+        bind=input_dropdown,
+        value=lista_teste[0]
+    )
 
-    barchart_time = alt.Chart(df_raw).mark_bar().encode(
-        x=alt.X('Test', title='Tip Test', axis=None),
-        y=alt.Y('mean(Timp_Executie_sec)', title='Timp Mediu Executie (secunde)'),
-        color=alt.Color('NumePC', legend=alt.Legend(title="Nume PC")),
-        column=alt.Column('Test', title='Tip Test', header=alt.Header(titleOrient="bottom", labelOrient="bottom")),
+    base_perf = alt.Chart(df).encode(
+        x=alt.X('NumePC:N', title=None, axis=alt.Axis(labels=True, labelAngle=0)),
+        y=alt.Y('mean(Performanta):Q', title='Performanta (Mai mare e mai bine)'),
+        color=alt.Color('NumePC:N', legend=None)
+    ).add_params(
+        selection
+    ).transform_filter(
+        selection
+    )
+
+    chart_perf = base_perf.mark_bar() + base_perf.mark_text(dy=-10).encode(text=alt.Text('mean(Performanta):Q', format='.2f'))
+    chart_perf = chart_perf.properties(title='Performanta (Scor)', width=300, height=300)
+
+    base_time = alt.Chart(df).encode(
+        x=alt.X('NumePC:N', title=None, axis=alt.Axis(labels=True, labelAngle=0)),
+        y=alt.Y('mean(Timp_Executie_sec):Q', title='Timp Executie (Mai mic e mai bine)'),
+        color=alt.Color('NumePC:N', legend=None)
+    ).add_params(
+        selection
+    ).transform_filter(
+        selection
+    )
+
+    chart_time = base_time.mark_bar() + base_time.mark_text(dy=-10).encode(text=alt.Text('mean(Timp_Executie_sec):Q', format='.4f'))
+    chart_time = chart_time.properties(title='Timp de Executie (Secunde)', width=300, height=300)
+
+    chart_heatmap = alt.Chart(df).mark_rect().encode(
+        x=alt.X('NumePC:N', title='Configuratie PC'),
+        y=alt.Y('Test:N', title='Tip Test'),
+        color=alt.Color('mean(Timp_Executie_sec):Q', 
+                        title='Durata (sec)',
+                        scale=alt.Scale(scheme='greens')), 
         tooltip=['NumePC', 'Test', 'mean(Timp_Executie_sec)']
     ).properties(
-        title='Timpul Mediu de Executie pe PC si Tip Test'
-    ).interactive()  
+        title='Harta Termica: Durata Testelor (Verde Inchis = Durata Mare)',
+        width=650,
+        height=250
+    )
 
-    barchart_time.save('barchart_timp_mediu.html')
-    print("Salvat: barchart_timp_mediu.html")
-
-    barchart_performance = alt.Chart(df_raw).mark_bar().encode(
-        x=alt.X('NumePC', title='Nume PC', axis=None),
-        y=alt.Y('mean(Performanta)', title='Performanta Medie'),
-        color=alt.Color('NumePC', legend=alt.Legend(title="Nume PC")),
-        column=alt.Column('Test', title='Tip Test (Unitati: MIPS pt Integer, MFLOPS pt Float)',
-                          header=alt.Header(titleOrient="bottom", labelOrient="bottom")),
-        tooltip=['NumePC', 'Test', 'mean(Performanta)', 'Unitate']
+    dashboard = alt.vconcat(
+        alt.hconcat(chart_perf, chart_time).resolve_scale(color='independent'),
+        chart_heatmap
     ).properties(
-        title='Performanta Medie pe PC si Tip Test'
-    ).interactive()  
+        title='Benchmark Dashboard'
+    ).configure_view(
+        stroke=None 
+    )
 
-    barchart_performance.save('barchart_performanta_medie.html')
-    print("Salvat: barchart_performanta_medie.html")
-
-    print("\nToate graficele au fost generate cu succes!")
+    output_file = 'dashboard_green.html'
+    dashboard.save(output_file)
+    
+    print(f"\nSUCCES! Deschide fisierul: {output_file}")
 
 except FileNotFoundError:
-    print(f"EROARE: Fisierul '{nume_fisier_date}' nu a fost gasit.")
-    print("Asigurati-va ca fisierul se afla in acelasi director cu scriptul Python.")
+    print(f"EROARE: Nu gasesc fisierul '{nume_fisier_date}'!")
 except Exception as e:
-    print(f"A aparut o eroare neasteptata: {e}")
+    print(f"Eroare: {e}")
