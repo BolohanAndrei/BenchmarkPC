@@ -76,7 +76,7 @@ Libraries:
 
 Option 1: Run the Executable
 
-1. Go to the Releases page.
+1. Go to the [Releases](https://github.com/BolohanAndrei/BenchmarkPC/releases) page.
 
 2. Download TitanBenchmarkPro.exe.
 
