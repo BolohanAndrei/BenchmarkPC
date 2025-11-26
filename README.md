@@ -9,10 +9,15 @@ A comprehensive C# & Windows Forms benchmarking suite designed to measure the CP
 Originally inspired by standard benchmarks like SPEC CPU2017 and SuperPi, Titan Benchmark Pro has evolved from a console script into a full-fledged GUI application. It provides real-time feedback, hardware detection, and interactive comparison charts.
 
 Key Capabilities:
+
 ✅ Integer Operations: 32-bit & 64-bit Arithmetic Logic Unit (ALU) stress testing.
+
 ✅ Floating-Point: Fused Multiply-Add (FMA) simulation for scientific calculation performance.
+
 ✅ Memory Stress: RAM Bandwidth (MB/s) & Latency (ns) measurement.
+
 ✅ GPU 2D Stress: GDI+ Rendering Benchmark to test Windows interface fluidity.
+
 ✅ Disk I/O: Sequential Read/Write speed tests for any selected drive.
 
 ---
