@@ -1,62 +1,48 @@
 # ⚡ PC Performance Benchmark
 
-A high-performance **C++ & Python** benchmarking suite designed to measure **CPU**, **Memory**, and **I/O** capabilities of modern computer systems.
+A comprehensive C# & Windows Forms benchmarking suite designed to measure the CPU, Memory, GPU, and Disk I/O capabilities of modern computer systems with a professional, easy-to-use interface.
 
 ---
 
 ## 🚀 About The Project
 
-This tool provides a synthetic benchmark inspired by **SPEC CPU2017**, **Whetstone**, and **Dhrystone** to deliver relevant performance metrics across:
+Originally inspired by standard benchmarks like SPEC CPU2017 and SuperPi, Titan Benchmark Pro has evolved from a console script into a full-fledged GUI application. It provides real-time feedback, hardware detection, and interactive comparison charts.
 
-✅ Integer operations  
-✅ Floating-point calculations  
-✅ Memory & RAM access (coming soon)  
-✅ Disk I/O operations (coming soon)
-
-Developed in **C++** for raw system testing and **Python** for visualization & data analytics.
+Key Capabilities:
+✅ Integer Operations: 32-bit & 64-bit Arithmetic Logic Unit (ALU) stress testing.
+✅ Floating-Point: Fused Multiply-Add (FMA) simulation for scientific calculation performance.
+✅ Memory Stress: RAM Bandwidth (MB/s) & Latency (ns) measurement.
+✅ GPU 2D Stress: GDI+ Rendering Benchmark to test Windows interface fluidity.
+✅ Disk I/O: Sequential Read/Write speed tests for any selected drive.
 
 ---
 
 ## 🎯 Core Objectives
 
 - **CPU Performance**
-  - Integer benchmark ➜ **MIPS**
-  - Floating-point benchmark ➜ **MFLOPS**
+  - Integer 32-bit & 64-bit ➜ **MIPS**
+  - Float FMA & SuperPi Sim ➜ **MFLOPS**
 - **Memory Performance**
-  - Memory bandwidth (**MB/s**) & latency _(planned)_
+  - Block Copy (1GB) ➜ **MB/s**
+  - Random Access ➜ **ns**
 - **Disk I/O Performance**
-  - Large sequential file R/W speed _(planned)_
-- **Cross-System Comparison**
-  - Normalized **geometric mean** for fair ranking
+  - Sequential R/W (1GB) ➜ **MB/s**
+- **GPU**
+  - 2D Rendering Stress ➜ **FPS**
 
 ---
 
 ## ✨ Features
 
-### 🖥️ C++ Benchmark Engine — `main.cpp`
+🖥️ Modern GUI: Dark mode interface with responsive Grid Layout.
 
-👉 Executes intensive CPU workloads
+🔍 Hardware Detection: Automatically identifies CPU model, RAM capacity, GPU, and OS using WMI.
 
-| Test Type      | Operations                    | Output |
-| -------------- | ----------------------------- | ------ |
-| Integer        | ADD, MUL, XOR, SHIFT, OR, AND | MIPS   |
-| Floating-Point | ADD, MUL, DIV, FMA            | MFLOPS |
+📊 Built-in Visualization: No external Python scripts needed! The app generates bar charts comparing your Score vs. Execution Time directly in the "Results" tab.
 
-📤 Results are automatically appended to **benchmark_results.csv**
+📁 Auto-Logging: All results are automatically appended to titan_results.csv for long-term tracking.
 
----
-
-### 📊 Python Visualization — `visualize.py`
-
-👉 Generates **interactive** charts using **Altair**
-
-- Mean execution time by system & test type
-- Mean performance score (MIPS/MFLOPS)
-
-Output:
-
-- `barchart_timp_mediu.html`
-- `barchart_performanta_medie.html`
+🛡️ Safe Disk Testing: Uses temporary folders for I/O testing to prevent data loss or permission errors.
 
 ---
 
@@ -65,69 +51,61 @@ Output:
 | Phase              |     Status     | Description                                 |
 | ------------------ | :------------: | ------------------------------------------- |
 | Research & Design  |       ✅       | Benchmarks defined, architecture finalized  |
-| Core CPU Benchmark | ⌛ In Progress | C++ MIPS/MFLOPS + CSV logging complete      |
-| Memory & I/O Tests |    🚧 Next     | RAM & disk performance evaluation           |
-| Reporting System   |   📅 Planned   | Auto hardware detection & performance index |
-| Final Analysis     |   📅 Planned   | Comparative insights + final report         |
+| Core CPU Benchmark |       ✅       | C++ MIPS/MFLOPS + CSV logging complete      |
+| Memory & I/O Tests |       ✅       | RAM & disk performance evaluation           |
+| Reporting System   |       ✅       | Auto hardware detection & performance index |
+| Final Analysis     |       ✅       | Comparative insights + final report         |
 
 ---
 
-## 📌 Getting Started
+## 🛠️ Tech Stack
 
-### 🔹 Part 1 — Run the Benchmark (C++)
+Language: C# (.NET Framework / .NET Core)
 
-#### Requirements
+Framework: Windows Forms (WinForms)
 
-- C++17 compatible compiler
+Libraries:
 
-#### Compile
+- System.Management (Hardware Info)
 
-```bash
-g++ -o benchmark main.cpp -std=c++17 -O2
+- System.Windows.Forms.DataVisualization (Charts)
+
+---
+
+📌 Getting Started
+
+Option 1: Run the Executable
+
+1. Go to the Releases page.
+
+2. Download TitanBenchmarkPro.exe.
+
+3. Run it directly on any Windows PC (No installation required).
+
+Option 2: Build from Source (Visual Studio)
+
+1. Clone the repo:
+```
+git clone [https://github.com/BolohanAndrei/BenchmarkPC.git](https://github.com/BolohanAndrei/BenchmarkPC.git)
 ```
 
-Run
 
-```bash
-./benchmark
-```
+2. Open the solution file (.sln) in Visual Studio 2019/2022.
 
-Output ➜ Console + benchmark_results.csv
+3. Ensure NuGet packages are restored (Right-click Solution -> Restore NuGet Packages).
 
-### 🔹 Part 2 — Visualize Results (Python)
+4. Select Release mode.
 
-### Requirements
-
-```bash
-pip install pandas altair openpyxl
-```
-
-⚠️ Convert benchmark_results.csv to benchmark_results.csv.xlsx
-(Open in Excel → Save As → .xlsx)
-
-Run the script
-
-```bash
-python visualize.py
-```
-
-✅ Open generated HTML charts in any browser
-
-📂 Project Structure
-
-```bash
-📁 BenchmarkPC
- ├─ main.cpp                # C++ core benchmark engine
- ├─ visualize.py            # Python visualization tool
- ├─ benchmark_results.csv   # Runtime test logs
- ├─ *.html                  # Interactive output charts
- └─ README.md               # You're reading this 😉
-```
+5. Hit Start.
+6. 
+---
 
 🤝 Contributions
 
 Contributions, optimization suggestions, and PRs are welcome!
 Let’s build a reliable open-source benchmark together 🔥
+
+---
 
 📬 Contact
 
