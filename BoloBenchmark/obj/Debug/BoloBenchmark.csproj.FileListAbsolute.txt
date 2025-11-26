@@ -1,0 +1,10 @@
+E:\Study\ANUL 3\SEM 1\SSC\proiect\BoloBenchmark\obj\Debug\BoloBenchmark.csproj.AssemblyReference.cache
+E:\Study\ANUL 3\SEM 1\SSC\proiect\BoloBenchmark\obj\Debug\BoloBenchmark.Properties.Resources.resources
+E:\Study\ANUL 3\SEM 1\SSC\proiect\BoloBenchmark\obj\Debug\BoloBenchmark.csproj.GenerateResource.cache
+E:\Study\ANUL 3\SEM 1\SSC\proiect\BoloBenchmark\obj\Debug\BoloBenchmark.csproj.CoreCompileInputs.cache
+E:\Study\ANUL 3\SEM 1\SSC\proiect\BoloBenchmark\bin\Debug\BoloBenchmark.exe.config
+E:\Study\ANUL 3\SEM 1\SSC\proiect\BoloBenchmark\bin\Debug\BoloBenchmark.exe
+E:\Study\ANUL 3\SEM 1\SSC\proiect\BoloBenchmark\bin\Debug\BoloBenchmark.pdb
+E:\Study\ANUL 3\SEM 1\SSC\proiect\BoloBenchmark\obj\Debug\BoloBenchmark.exe
+E:\Study\ANUL 3\SEM 1\SSC\proiect\BoloBenchmark\obj\Debug\BoloBenchmark.pdb
+E:\Study\ANUL 3\SEM 1\SSC\proiect\BoloBenchmark\obj\Debug\BoloBenchmark.exe.config
