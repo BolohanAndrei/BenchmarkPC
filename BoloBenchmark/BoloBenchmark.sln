@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoloBenchmark", "BoloBenchmark.csproj", "{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}.Debug|x64.Build.0 = Debug|Any CPU
+		{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}.Release|ARM64.Build.0 = Release|Any CPU
+		{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}.Release|x64.ActiveCfg = Release|Any CPU
+		{F3AE1BD4-9F75-4A0F-8EC5-480984D8A2AD}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {62D89C6D-D2E0-4EAB-A5B4-2F9E32AA933B}
+	EndGlobalSection
+EndGlobal
